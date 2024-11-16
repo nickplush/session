@@ -1,0 +1,29 @@
+.answers-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vaiant {
+    cursor: pointer;
+    background-color: beige;
+    padding: 10px;
+    border-radius: 10px;
+    margin:10px;
+}
+
+.selected {
+    background-color: rgb(36, 39, 83);
+    color: white;
+    
+  }
+
+  .error {
+    background-color: rgb(172, 11, 11);
+    color: white;
+  }
+
+  .good {
+    background-color: rgb(14, 204, 93);
+    color: white;
+  }
