@@ -22,26 +22,42 @@ function App() {
       const name = slicedImageName[1]
       const src = images(image)
       const country = countryName
-      authors.add(author)
-      curNames.add(name)
+      authors.add(author.trim())
+      curNames.add(name.trim())
       return {id:image,author, name, src, country}
     });
-    setAuthor(Array.from(authors))
-    setNames(Array.from(curNames))
+    setAuthor((arr)=> [...arr, ...Array.from(authors)])
+    setNames((arr)=> [...arr, ...Array.from(curNames)])
     return imageList
   } 
+
+
+  const checkYouHomeWork = () => {
+    let a = true
+    const fields = ['name', 'country', 'author']
+      fields.forEach(field => {
+       if (selectedAnswer[field] !== myAnswer[field]) {
+        a = false
+       }
+      });
+    return a
+  }
 
 
   const startNewVariant = () => {
     const arr = [...variants]
     const indexElement = randomIntFromInterval(0, arr.length-1)
     const selected = arr.splice(indexElement, 1)
-    if (!selected[0]) {
-      
+
+    if (myAnswer && selectedAnswer && !checkYouHomeWork()) {
+      console.log('ch', checkYouHomeWork())
+      arr.push(selected[0])
     }
+
     setSelectedAnswer(selected[0])
     setMyAnswer({...selected[0], name: '', country: '', author: ''})
     setVariants(arr)
+    console.log(arr.length)
     setChecked(false)
   }
 

@@ -9,19 +9,17 @@ const Answers = ({onChangeAnswer, currentQwestion, allVariants, answer, checked}
 
     const changeVariant = (variantName) => {
         const indexOfRightvariant = randomIntFromInterval(0, 3)
-        console.log(currentQwestion)
-        console.log(variantName)
         const selectedTypeAllVariants = [...allVariants[variantName]].filter(item => item !== currentQwestion[variantName])
         const variants = []
         for(let i = 0; i < 4; i++) {
             if (i === indexOfRightvariant) {
                 variants.push(currentQwestion[variantName])
             } else {
+                console.log(selectedTypeAllVariants)
                 const variant = selectedTypeAllVariants.splice(randomIntFromInterval(0, selectedTypeAllVariants.length-1), 1)
                 variants.push(variant[0])
             }
         }
-        console.log(variants)
         return variants
     }
 
